@@ -1,26 +1,33 @@
 import Link from 'next/link';
-import { ArrowRight, BarChart3, ShieldCheck, Zap } from 'lucide-react';
+import { ArrowRight, BarChart3, ShieldCheck, Zap, Mail } from 'lucide-react';
+import { articles } from '@/data/news';
 
 export default function Home() {
+  const leadStory = articles.find(a => a.isLead) || articles[0];
+  const gridStories = articles.filter(a => !a.isLead).slice(0, 3);
+  const remainingStories = articles.filter(a => !a.isLead).slice(3);
+
   return (
     <div className="container py-12">
 
       {/* LEAD STORY */}
       <section className="mb-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start border-b border-[var(--border)] pb-12">
         <div className="lg:col-span-8">
-          <span className="tag">Policy & Regulation</span>
-          <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6 leading-tight text-[var(--primary)]">
-            Der "AI Act" ist da: Was der deutsche Mittelstand jetzt tun muss
-          </h1>
+          <Link href={`/news/${leadStory.id}`} className="group">
+            <span className="tag">{leadStory.tag}</span>
+            <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6 leading-tight text-[var(--primary)] group-hover:text-[var(--accent)] transition-colors">
+              {leadStory.title}
+            </h1>
+          </Link>
           <p className="text-xl text-[var(--subtext)] font-serif italic mb-6 leading-relaxed">
-            Die finale Abstimmung in Brüssel setzt neue Standards. Doch während DAX-Konzerne vorbereitet sind, droht dem "Hidden Champion" eine Compliance-Falle. Eine Analyse der neuen Risikoklassen.
+            {leadStory.excerpt}
           </p>
           <div className="flex items-center gap-4 text-sm text-[var(--subtext)]">
-            <span className="font-semibold text-[var(--primary)]">Von Dr. Julia Werner</span>
+            <span className="font-semibold text-[var(--primary)]">Von {leadStory.author}</span>
             <span>•</span>
-            <span>26. Dezember 2025</span>
+            <span>{leadStory.date}</span>
             <span>•</span>
-            <span>7 Min. Lesezeit</span>
+            <span>{leadStory.readTime}</span>
           </div>
         </div>
         <div className="lg:col-span-4 flex flex-col gap-8">
@@ -37,7 +44,7 @@ export default function Home() {
             </button>
           </div>
 
-          {/* Existing Market Indicator - Kept but smaller priority視覺ally */}
+          {/* Existing Market Indicator */}
           <div className="bg-[var(--section-bg)] p-6 border-l-4 border-[var(--gold)]">
             <h3 className="font-bold text-[var(--primary)] mb-2 uppercase text-xs tracking-wider">Markt-Indikator</h3>
             <div className="flex justify-between items-end mb-2">
@@ -84,73 +91,79 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-          {/* Card 1 */}
-          <article className="news-card group">
-            <div className="news-image mb-4 relative overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
-                alt="High Tech Chipset"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-            <div className="news-content p-0 px-2 pb-2">
-              <span className="tag">Venture Capital</span>
-              <h3 className="news-title font-serif font-bold text-xl mb-3 group-hover:text-[var(--accent)] transition-colors">
-                Aleph Alpha sichert sich weitere 150M€ für "Sovereign Cloud" Expansion
-              </h3>
-              <p className="news-excerpt text-[var(--subtext)] text-sm mb-4 line-clamp-3">
-                Das Heidelberger KI-Unternehmen will die Abhängigkeit von US-Hyperscalern verringern. Ein Konsortium aus Bosch, SAP und Schwarz Gruppe führt die Runde an.
-              </p>
-              <div className="mt-auto text-xs text-gray-500 font-mono">14:30 Uhr • Frankfurt</div>
-            </div>
-          </article>
-
-          {/* Card 2 */}
-          <article className="news-card group">
-            <div className="news-image mb-4 relative overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1565043666747-69f6646db940?auto=format&fit=crop&w=800&q=80"
-                alt="Automotive Factory"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-            <div className="news-content p-0 px-2 pb-2">
-              <span className="tag">Industry Cases</span>
-              <h3 className="news-title font-serif font-bold text-xl mb-3 group-hover:text-[var(--accent)] transition-colors">
-                BMW's neue "Neural Factory": Wie KI die Produktionslinie steuert
-              </h3>
-              <p className="news-excerpt text-[var(--subtext)] text-sm mb-4 line-clamp-3">
-                Im Werk München testet der Autobauer den ersten vollautonomen KI-Leitstand. Wir haben mit Produktionsvorstand Milan Nedeljković gesprochen.
-              </p>
-              <div className="mt-auto text-xs text-gray-500 font-mono">11:15 Uhr • München</div>
-            </div>
-          </article>
-
-          {/* Card 3: Elite/Research Case */}
-          <article className="news-card group">
-            <div className="news-image mb-4 relative overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80"
-                alt="AI Neural Network"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-            <div className="news-content p-0 px-2 pb-2">
-              <span className="tag">Deep Tech & Elite</span>
-              <h3 className="news-title font-serif font-bold text-xl mb-3 group-hover:text-[var(--accent)] transition-colors">
-                LLM-Effizienz: Neue Benchmarks für deutsche Sprachmodelle
-              </h3>
-              <p className="news-excerpt text-[var(--subtext)] text-sm mb-4 line-clamp-3">
-                Ein Exklusiv-Report über Token-Optimierung und On-Premise-Lösungen für den Datenschutz-sensiblen DAX-Sektor. Warum Effizienz der neue Performance-Maßstab ist.
-              </p>
-              <div className="mt-auto text-xs text-gray-500 font-mono">Vor 2 Stunden • Berlin / KI-Park</div>
-            </div>
-          </article>
+          {gridStories.map((article) => (
+            <article key={article.id} className="news-card group">
+              <Link href={`/news/${article.id}`}>
+                <div className="news-image mb-4 relative overflow-hidden h-48">
+                  <img
+                    src={article.image}
+                    alt={article.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="news-content p-0 px-2 pb-2">
+                  <span className="tag">{article.tag}</span>
+                  <h3 className="news-title font-serif font-bold text-xl mb-3 group-hover:text-[var(--accent)] transition-colors">
+                    {article.title}
+                  </h3>
+                  <p className="news-excerpt text-[var(--subtext)] text-sm mb-4 line-clamp-3">
+                    {article.excerpt}
+                  </p>
+                  <div className="mt-auto text-xs text-gray-500 font-mono">
+                    {article.time} • {article.location}
+                  </div>
+                </div>
+              </Link>
+            </article>
+          ))}
         </div>
       </section>
 
-      {/* NEW SECTION: RISK & OPPORTUNITY */}
+      {/* MIDDLE SECTION: TRENDING & NEWSLETTER */}
+      <section className="mb-16 grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div className="lg:col-span-2">
+          <div className="flex items-center gap-4 mb-8 border-b border-[var(--border)] pb-4">
+            <h2 className="text-2xl font-serif font-bold text-[var(--primary)] uppercase tracking-tight">Weitere Storys</h2>
+          </div>
+          <div className="space-y-8">
+            {remainingStories.map(article => (
+              <Link key={article.id} href={`/news/${article.id}`} className="flex gap-6 group border-b border-[var(--border)] pb-8 last:border-0">
+                <div className="w-32 h-24 flex-shrink-0 overflow-hidden bg-gray-100">
+                  <img src={article.image} alt={article.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" />
+                </div>
+                <div>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--gold)] mb-1 block">{article.tag}</span>
+                  <h3 className="text-lg font-serif font-bold leading-tight group-hover:text-[var(--accent)]">{article.title}</h3>
+                  <p className="text-xs text-[var(--subtext)] mt-2 italic">{article.date} | Von {article.author}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <div className="bg-[var(--primary)] text-white p-8 self-start sticky top-24">
+          <Mail className="mb-4 text-[var(--gold)]" size={32} />
+          <h2 className="text-2xl font-serif font-bold mb-4 italic">Der Morgen-Kompass</h2>
+          <p className="text-sm text-gray-300 mb-6 leading-relaxed">
+            Jeden Morgen um 8:00 Uhr: Die 5 wichtigsten AI-News für deutsche Entscheider direkt in Ihr Postfach.
+          </p>
+          <div className="space-y-3">
+            <input
+              type="email"
+              placeholder="E-Mail-Adresse"
+              className="w-full bg-white/10 border border-white/20 p-3 text-sm focus:outline-none focus:border-[var(--gold)] transition-colors"
+            />
+            <button className="w-full bg-[var(--gold)] hover:bg-yellow-600 text-white font-bold py-3 px-4 uppercase tracking-widest text-xs transition-colors shadow-lg">
+              Kostenlos Abonnieren
+            </button>
+          </div>
+          <p className="text-[10px] text-gray-500 mt-4 text-center">
+            Abmeldung jederzeit möglich. Datenschutzkonform.
+          </p>
+        </div>
+      </section>
+
+      {/* RISK & OPPORTUNITY */}
       <section className="mb-16 py-12 border-y border-[var(--border)] bg-[var(--section-bg)] -mx-6 px-6 md:mx-0 md:px-12">
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
