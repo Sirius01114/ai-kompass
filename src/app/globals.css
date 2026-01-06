@@ -1,42 +1,214 @@
+@import "tailwindcss";
+
+
+/* Custom Font Import removed (handled by Next.js font/google) */
+
+
+/* Dark Mode overrides removed to maintain light newspaper aesthetic */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    --foreground-rgb: 15, 23, 42;
+    --background-start-rgb: 252, 252, 250;
+    --background-end-rgb: 255, 255, 255;
+    --primary: #0F172A;
+    --accent: #0052CC;
+    --gold: #C5A065;
+    --border: #E2E8F0;
+    --subtext: #64748B;
+    --section-bg: #F1F5F9;
 }
 
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+body {
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(to bottom,
+            transparent,
+            rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+    font-family: 'Inter', sans-serif;
+    /* Body font */
+    line-height: 1.6;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Playfair Display', serif;
+    /* Authority Font */
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+
+/* Utilities */
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.serif {
+    font-family: 'Playfair Display', serif;
+}
+
+.sans {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Custom Component Styles */
+.btn-primary {
+    background-color: var(--primary);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 2px;
+    /* Sharp corners for professional look */
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    border: 1px solid var(--primary);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--primary);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--primary);
+    padding: 12px 24px;
+    border-radius: 2px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    border: 1px solid var(--border);
+    cursor: pointer;
+}
+
+.btn-outline:hover {
+    border-color: var(--primary);
+}
+
+.tag {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 8px;
+    display: inline-block;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--primary);
+    padding-bottom: 1rem;
+}
+
+/* Card Styles that mimic 'Paper' */
+.news-card {
+    background: rgb(var(--background-end-rgb));
+    border: 1px solid var(--border);
+    transition: transform 0.2s, box-shadow 0.2s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.news-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border-color: var(--subtext);
+}
+
+.news-image {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    background-color: #f0f0f0;
+}
+
+.news-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.news-meta {
+    color: var(--subtext);
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.news-title {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+}
+
+.news-excerpt {
+    color: var(--subtext);
+    font-size: 1rem;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+/* Ticker Animation */
+@keyframes ticker-scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.ticker-container {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    width: 100%;
+}
+
+.ticker-content {
+    display: inline-flex;
+    animation: ticker-scroll 30s linear infinite;
+}
+
+.ticker-content:hover {
+    animation-play-state: paused;
+}
+
+.ticker-item {
+    padding: 0 40px;
+    flex-shrink: 0;
+}
+
+input {
+    border: 1px solid var(--border);
+    padding: 10px;
+    border-radius: 2px;
+    width: 100%;
+    font-family: inherit;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary);
 }
