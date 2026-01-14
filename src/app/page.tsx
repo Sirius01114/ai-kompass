@@ -19,7 +19,7 @@ export default function Home() {
               {leadStory.title}
             </h1>
           </Link>
-          <p className="text-2xl text-[var(--subtext)] font-serif italic mb-12 leading-relaxed max-w-3xl">
+          <p className="text-lg md:text-2xl text-[var(--subtext)] font-serif italic mb-12 leading-relaxed max-w-3xl">
             {leadStory.excerpt}
           </p>
           <div className="flex items-center gap-4 text-sm text-[var(--subtext)]">

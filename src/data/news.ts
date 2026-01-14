@@ -19,7 +19,7 @@ export const articles: Article[] = [
         category: 'policy',
         tag: 'Recht & Compliance',
         title: 'Der "AI Act" ist da: Was der deutsche Mittelstand jetzt tun muss',
-        excerpt: 'Die finale Abstimmung in Brüssel zementiert eine neue Ära der technologischen Regulierung. Während multinationale DAX-Konzerne bereits Heerscharen von Anwälten mobilisiert haben, droht dem deutschen Mittelstand – den "Hidden Champions" – eine folgenschwere Compliance-Falle. Ohne eine fundierte Strategie und die entsprechende fachliche Qualifizierung der Führungskräfte riskieren Unternehmen nicht nur drakonische Bußgelder, sondern auch den Anschluss an den globalen Innovationswettbewerb. Unsere Analyse beleuchtet die kritischen Risikoklassen und zeigt konkrete Lösungswege für Geschäftsführer und Entscheider auf.',
+        excerpt: 'Die finale Abstimmung in Brüssel zementiert eine neue Ära der KI-Regulierung. Während Großkonzerne aufrüsten, droht dem Mittelstand eine Compliance-Falle. Unsere Analyse zeigt auf, wie Entscheider jetzt reagieren müssen, um Bußgelder zu vermeiden.',
         author: 'Dr. Julia Werner',
         date: '14. Januar 2026',
         readTime: '7 Min. Lesezeit',
