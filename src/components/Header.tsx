@@ -47,7 +47,7 @@ export default function Header() {
 
             {/* Main Masthead */}
             <div className="pt-32 pb-64 mb-40 text-center relative container">
-                <div className="absolute left-6 top-40 -translate-y-1/2 md:hidden">
+                <div className="absolute left-4 top-1/2 -translate-y-1/2 md:hidden">
                     <button className="p-2"><Menu /></button>
                 </div>
 
@@ -55,14 +55,14 @@ export default function Header() {
                     <h1 className="text-5xl md:text-8xl tracking-tight text-[var(--primary)] mb-10 group-hover:opacity-90 transition-opacity uppercase font-black font-serif">
                         <span className="text-red-600">KI</span>-MONITOR
                     </h1>
-                    <p className="text-[var(--subtext)] text-xs md:text-base tracking-[0.4em] uppercase font-bold whitespace-nowrap">
+                    <p className="text-[var(--subtext)] text-[10px] md:text-base tracking-[0.2em] md:tracking-[0.4em] uppercase font-bold whitespace-normal max-w-[280px] md:max-w-none mx-auto leading-relaxed">
                         Global Intelligence · Autonomous Transformation
                     </p>
                 </Link>
 
-                <div className="absolute right-6 top-40 -translate-y-1/2 flex items-center gap-6">
+                <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-2 md:gap-6">
                     <button className="p-2 hover:bg-[var(--section-bg)] rounded-full transition-colors text-[var(--primary)] text-xl">
-                        <Search size={28} />
+                        <Search size={24} />
                     </button>
                     <Link href="/login" className="hidden md:flex items-center gap-3 text-sm font-black border-2 border-[var(--primary)] px-8 py-3 hover:bg-[var(--primary)] hover:text-white transition-all uppercase tracking-widest">
                         <User size={18} />
