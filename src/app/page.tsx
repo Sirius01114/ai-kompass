@@ -101,9 +101,9 @@ export default function Home() {
 
       {/* THREE COLUMN NEWS GRID */}
       <section className="mb-32">
-        <div className="flex justify-between items-end mb-16 border-b border-[var(--border)] pb-8">
-          <h2 className="text-4xl font-serif font-bold text-[var(--primary)] text-center w-full md:text-left md:w-auto">Aktuelle Analysen</h2>
-          <Link href="/news" className="text-sm font-bold uppercase tracking-wide flex items-center gap-2 hover:text-[var(--accent)]">
+        <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-16 border-b border-[var(--border)] pb-8 gap-6">
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-[var(--primary)]">Aktuelle Analysen</h2>
+          <Link href="/news" className="text-xs md:text-sm font-bold uppercase tracking-wide flex items-center gap-2 hover:text-[var(--accent)] transition-colors">
             Alle Nachrichten <ArrowRight size={16} />
           </Link>
         </div>
