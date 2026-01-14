@@ -55,7 +55,7 @@ export default function Header() {
                     <h1 className="text-5xl md:text-8xl tracking-tight text-[var(--primary)] mb-10 group-hover:opacity-90 transition-opacity uppercase font-black font-serif">
                         <span className="text-red-600">KI</span>-MONITOR
                     </h1>
-                    <p className="text-[var(--subtext)] text-[10px] md:text-base tracking-[0.2em] md:tracking-[0.4em] uppercase font-bold whitespace-normal max-w-[280px] md:max-w-none mx-auto leading-relaxed">
+                    <p className="text-[var(--subtext)] text-[9px] md:text-base tracking-[0.1em] md:tracking-[0.4em] uppercase font-bold whitespace-normal max-w-[240px] md:max-w-none mx-auto leading-relaxed">
                         Global Intelligence · Autonomous Transformation
                     </p>
                 </Link>
