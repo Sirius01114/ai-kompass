@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
 
 export const metadata: Metadata = {
-  title: "AI-KOMPASS.DE | Intelligence for the German Economy",
+  title: "KI-MONITOR | Global Intelligence & Autonomous Transformation",
   description: "The leading source for global AI news, regulation, and investment, curated for the German market.",
 };
 
